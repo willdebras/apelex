@@ -21,15 +21,14 @@ get_vote <- function(key = Sys.getenv("apelex_api_key"),
                      race_type = NULL) {
 
 
-  base_url <- "https://api.ap.org/v2/elections/"
+  base_url <- "https://api.ap.org/v2/"
 
-  end_point <- date
+  end_point <- "elections/"
 
-  url_full <- paste0(base_url, end_point)
+  url_full <- paste0(base_url, end_point, date)
 
-  raw_apelex <- httr::GET(base_url, query = list(
+  raw_apelex <- httr::GET(url_full, query = list(
 
-    date = date,
     format = "json",
     level = level,
     statepostal = state,
@@ -46,6 +45,24 @@ get_vote <- function(key = Sys.getenv("apelex_api_key"),
     httr::content(raw_apelex, "text"),
     simplifyDataFrame = TRUE
   )
+
+  races_df <- parsed_apelex$races
+
+  tidy_unlist <- function(x) {
+
+    if (!any(stringr::str_detect(sapply(x, class), "list")))
+
+      return(x)
+
+    else
+
+    return(tidy_unlist(tidyr::unnest(x)))
+
+  }
+
+  races_unnested <- tidy_unlist(races_df)
+
+  return(races_unnested)
 
 
 }
