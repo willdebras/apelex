@@ -1,17 +1,26 @@
-#' Title
+#' get_vote
 #'
-#' @param key
-#' @param date
-#' @param state
-#' @param level
-#' @param office_id
-#' @param winner
-#' @param race_type
+#' Function to get vote count data for a given date from the AP API's elections endpoint
 #'
-#' @return
+#' @param key Supplied API key
+#' @param date Election date supplied in the format of Y-M-D
+#' @param state  Optional parameter for state supplied as postal code, e.g. "IA"
+#' @param level Level of reporting units. Can take arguments for state, district, fipscode, or reporting unit
+#' @param office_id AP ID code for the office position. Optionally can be a list or vector of IDs
+#' @param winner If a winners has been declared. Can supply "X" if a races has a declared winer, R if there is a run-off, U if there is no declared winner, or A for all. Defaults to all.
+#' @param race_type Type of election. Optionally can be list or vector of types
+#'
+#' @return Returns a tidy dataframe of election results
 #' @export
 #'
 #' @examples
+#' @importFrom httr GET http_type content
+#' @importFrom jsonlite fromJSON
+#' @importFrom tidyr unnest
+#' @importFrom stringr str_detect
+#'
+#' test_ia <- get_vote(key = Sys.getenv("apelex_api_key"), level = "fipscode", state = "IA", date = "2020-02-03")
+
 get_vote <- function(key = Sys.getenv("apelex_api_key"),
                      date = NULL,
                      state = NULL,
@@ -35,7 +44,8 @@ get_vote <- function(key = Sys.getenv("apelex_api_key"),
     apikey = key,
     officeID = office_id,
     winner = winner,
-    raceTypeId = race_type
+    raceTypeId = race_type,
+    test = "true"
 
     )
 
@@ -56,7 +66,7 @@ get_vote <- function(key = Sys.getenv("apelex_api_key"),
 
     else
 
-    return(tidy_unlist(tidyr::unnest(x)))
+      return(tidy_unlist(tidyr::unnest(x)))
 
   }
 
