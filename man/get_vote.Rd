@@ -11,7 +11,11 @@ get_vote(
   level = NULL,
   office_id = NULL,
   winner = NULL,
-  race_type = NULL
+  race_type = NULL,
+  party = NULL,
+  test = FALSE,
+  national = TRUE,
+  uncontested = FALSE
 )
 }
 \arguments{
@@ -28,10 +32,15 @@ get_vote(
 \item{winner}{If a winners has been declared. Can supply "X" if a races has a declared winer, R if there is a run-off, U if there is no declared winner, or A for all. Defaults to all.}
 
 \item{race_type}{Type of election. Optionally can be list or vector of types}
+
+\item{uncontested}{}
 }
 \value{
 Returns a tidy dataframe of election results
 }
 \description{
 Function to get vote count data for a given date from the AP API's elections endpoint
+}
+\examples{
+test_ia <- get_vote(key = Sys.getenv("apelex_api_key"), level = "fipscode", state = "IA", date = "2020-02-03")
 }

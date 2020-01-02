@@ -1,11 +1,19 @@
-#' get_report
+#' get_vat
 #'
-#' @param key
+#' Function to get vote count data aggregated by strata, geographic region, or party estimates from the AP voter analysis tool
 #'
-#' @return
+#' @param key Supplied API key
+#' @param test
+#' @param report The type of VAT report to get data from. Options include: CountyGeoStrata, CountyPartyStrataEstimates, CountyGeoStrataEstimates, CountyPartyStatewideEstimates, CountyGeoStatewideEstimates
+#'
+#' @return Returns a tidy dataframe of VAT results
 #' @export
 #'
-#' @examples
+#' @importFrom httr GET http_type content
+#' @importFrom jsonlite fromJSON
+#'
+#' @examples vat_test <- get_vat(report = "CountyGeoStrata", key = "key = Sys.getenv("apelex_api_key")
+
 get_vat <- function(key = Sys.getenv("apelex_api_key"),
                     test = FALSE,
                     report = c("CountyGeoStrata",
