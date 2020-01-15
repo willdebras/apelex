@@ -62,6 +62,9 @@ get_vote <- function(key = Sys.getenv("apelex_api_key"),
 
   )
 
+  if (httr::http_type(raw_apelex) != "application/json") {
+    stop("Help I'm stuck in a JSON factory: API did not return json", call. = FALSE)
+  }
 
 
   parsed_apelex <- jsonlite::fromJSON(
