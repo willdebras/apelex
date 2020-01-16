@@ -12,7 +12,7 @@
 #' @importFrom httr GET http_type content
 #' @importFrom jsonlite fromJSON
 #'
-#' @examples vat_test <- get_vat(report = "CountyGeoStrata", key = "key = Sys.getenv("apelex_api_key")
+#' @examples vat_test <- get_vat(report = "CountyGeoStrata", key = "key = Sys.getenv("apelex_api_key"))
 
 get_vat <- function(key = Sys.getenv("apelex_api_key"),
                     test = FALSE,
@@ -24,12 +24,12 @@ get_vat <- function(key = Sys.getenv("apelex_api_key"),
                                "CountyGeoStatewideEstimates")) {
 
 report <- switch(report,
-                   CountyGeoStrata = "57ff8fd4e6de4ac59f1e14289654a11d",
-                   CountyPartyStrata = "c44163209e0640828fed9eaee3aa7f3a",
-                   CountyPartyStrataEstimates = "ab5324f29d1b42d8892287c38bd3ffc7",
-                   CountyGeoStrataEstimates = "d55e73de04474622bad451c1617bb6d5",
-                   CountyPartyStatewideEstimates = "37cc2caf95094dcc96448095c432dd4a",
-                   CountyGeoStatewideEstimates = "ca2e1c70db00439999897230d9023762")
+                   CountyGeoStrata = "9ce6742096324717bada64791239a351",
+                   CountyPartyStrata = "360f8d5addc34ca6b45e7a3d2745bd97",
+                   CountyPartyStrataEstimates = "97bf0dbf9fd74784a7b76fbf8c161fde",
+                   CountyGeoStrataEstimates = "2ed5c8076dda4bf6ad19d81df68efa40",
+                   CountyPartyStatewideEstimates = "a31b5d1e96624d679419b23775f3467d",
+                   CountyGeoStatewideEstimates = "fad384546bf145b3b7ece2f31f629bb8")
 
 base_url <- "https://api.ap.org/v2/"
 
