@@ -15,6 +15,8 @@ get_vat(
 \arguments{
 \item{key}{Supplied API key}
 
+\item{test}{TRUE/FALSE. Whether to use test data (TRUE) or production data (FALSE). Defaults to FALSE.}
+
 \item{report}{The type of VAT report to get data from. Options include: CountyGeoStrata, CountyPartyStrataEstimates, CountyGeoStrataEstimates, CountyPartyStatewideEstimates, CountyGeoStatewideEstimates}
 }
 \value{
