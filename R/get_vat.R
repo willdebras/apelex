@@ -3,7 +3,7 @@
 #' Function to get vote count data aggregated by strata, geographic region, or party estimates from the AP voter analysis tool
 #'
 #' @param key Supplied API key
-#' @param test
+#' @param test TRUE/FALSE. Whether to use test data (TRUE) or production data (FALSE). Defaults to FALSE.
 #' @param report The type of VAT report to get data from. Options include: CountyGeoStrata, CountyPartyStrataEstimates, CountyGeoStrataEstimates, CountyPartyStatewideEstimates, CountyGeoStatewideEstimates
 #'
 #' @return Returns a tidy dataframe of VAT results
