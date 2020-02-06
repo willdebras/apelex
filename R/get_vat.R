@@ -54,8 +54,7 @@ get_vat <- function(key = Sys.getenv("apelex_api_key"),
 
   raw_apvat <- httr::GET(report_new, query = list(
 
-    apikey = key,
-    test = test
+    apikey = key
 
     )
 
