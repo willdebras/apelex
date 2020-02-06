@@ -9,7 +9,8 @@ get_vat(
   test = FALSE,
   report = c("CountyGeoStrata", "CountyPartyStrata", "CountyPartyStrataEstimates",
     "CountyGeoStrataEstimates", "CountyPartyStatewideEstimates",
-    "CountyGeoStatewideEstimates")
+    "CountyGeoStatewideEstimates"),
+  date = Sys.Date()
 )
 }
 \arguments{
@@ -18,10 +19,15 @@ get_vat(
 \item{test}{TRUE/FALSE. Whether to use test data (TRUE) or production data (FALSE). Defaults to FALSE.}
 
 \item{report}{The type of VAT report to get data from. Options include: CountyGeoStrata, CountyPartyStrataEstimates, CountyGeoStrataEstimates, CountyPartyStatewideEstimates, CountyGeoStatewideEstimates}
+
+\item{date}{date of the election in ISO format, e.g. "2020-02-03". Defaults to Sys.Date()}
 }
 \value{
 Returns a tidy dataframe of VAT results
 }
 \description{
 Function to get vote count data aggregated by strata, geographic region, or party estimates from the AP voter analysis tool
+}
+\examples{
+vat_test <- get_vat(report = "CountyGeoStrata", key = "key = Sys.getenv("apelex_api_key"), date = "2020-02-03)
 }

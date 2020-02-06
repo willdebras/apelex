@@ -1,10 +1,10 @@
 #' Title
 #'
-#' @param key
-#' @param test
-#' @param report
+#' @param key Supplied API key
+#' @param test TRUE/FALSE. Whether to use test data (TRUE) or production data (FALSE). Defaults to FALSE.
+#' @param report report id. Can be found at api.ap.org/v2/reports endpoint
 #'
-#' @return
+#' @return Returns dataframe with report
 #' @export
 #'
 #' @examples

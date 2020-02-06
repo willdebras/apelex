@@ -9,8 +9,8 @@
 #' @param office_id AP ID code for the office position. Optionally can be a list or vector of IDs
 #' @param winner If a winners has been declared. Can supply "X" if a races has a declared winer, R if there is a run-off, U if there is no declared winner, or A for all. Defaults to all.
 #' @param race_type Type of election. Optionally can be list or vector of types
-#' @param party
-#' @param test
+#' @param party political party
+#' @param test TRUE/FALSE. Whether to use test data (TRUE) or production data (FALSE). Defaults to FALSE.
 #' @param national
 #' @param uncontested
 #'

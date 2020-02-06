@@ -33,6 +33,10 @@ get_vote(
 
 \item{race_type}{Type of election. Optionally can be list or vector of types}
 
+\item{party}{political party}
+
+\item{test}{TRUE/FALSE. Whether to use test data (TRUE) or production data (FALSE). Defaults to FALSE.}
+
 \item{uncontested}{}
 }
 \value{
