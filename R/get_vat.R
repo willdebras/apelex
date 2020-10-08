@@ -32,7 +32,7 @@ get_vat <- function(key = Sys.getenv("apelex_api_key"),
   vat_reps  <- httr::GET(url, query = list(
 
     apikey = key,
-    format = "json"
+    format = "json",
     test = test
 
     )
