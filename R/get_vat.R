@@ -33,6 +33,7 @@ get_vat <- function(key = Sys.getenv("apelex_api_key"),
 
     apikey = key,
     format = "json"
+    test = test
 
     )
 
