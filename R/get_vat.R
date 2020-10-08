@@ -27,10 +27,11 @@ get_vat <- function(key = Sys.getenv("apelex_api_key"),
                                "CountyGeoStatewideEstimates"),
                     date = Sys.Date()) {
 
-  url <- "https://api.ap.org/v2/reports?type=SPE_VATEstimate"
+  url <- "https://api.ap.org/v2/reports"
 
   vat_reps  <- httr::GET(url, query = list(
 
+    type = "SPE_VATEstimate",
     apikey = key,
     format = "json",
     test = test
@@ -41,9 +42,11 @@ get_vat <- function(key = Sys.getenv("apelex_api_key"),
 
   parsed_vat_reps <- jsonlite::fromJSON(httr::content(vat_reps, "text"), simplifyDataFrame = TRUE)
 
-  urls_df <- tidyr::unnest(parsed_vat_reps$reports, cols = c(categories))[c(FALSE, TRUE, FALSE, FALSE),]
+  urls_df <- tidyr::unnest(parsed_vat_reps$reports, cols = c(categories))
 
-  urls_date <- dplyr::filter(urls_df, electionDate == !!date)
+  urls_df2 <- urls_df[seq(2, nrow(urls_df), 5),]
+
+  urls_date <- dplyr::filter(urls_df2, electionDate == !!date)
 
 
   urls_switch <- paste0(urls_date$term, " = ", "\"", urls_date$id, "\"", collapse = ",")
@@ -55,8 +58,7 @@ get_vat <- function(key = Sys.getenv("apelex_api_key"),
 
   raw_apvat <- httr::GET(report_new, query = list(
 
-    apikey = key,
-    test = test
+    apikey = key
 
     )
 
